@@ -164,7 +164,7 @@ static void task_game(void *pvParameters) {
 				
 			}
 			
-			//delay_ms(1000);
+			delay_ms(1000);
 		}
 		
 		delay_ms(1000);
@@ -206,8 +206,8 @@ void io_init(void) {
 	pio_configure(BUZZER_PIO, PIO_OUTPUT_0, BUZZER_PIO_IDX_MASK, PIO_DEFAULT);
 	
 	pio_configure(BUT1_PIO, PIO_INPUT, BUT1_PIO_IDX_MASK, PIO_PULLUP| PIO_DEBOUNCE);
-	pio_configure(BUT1_PIO, PIO_INPUT, BUT2_PIO_IDX_MASK, PIO_PULLUP| PIO_DEBOUNCE);
-	pio_configure(BUT1_PIO, PIO_INPUT, BUT3_PIO_IDX_MASK, PIO_PULLUP| PIO_DEBOUNCE);
+	pio_configure(BUT2_PIO, PIO_INPUT, BUT2_PIO_IDX_MASK, PIO_PULLUP| PIO_DEBOUNCE);
+	pio_configure(BUT3_PIO, PIO_INPUT, BUT3_PIO_IDX_MASK, PIO_PULLUP| PIO_DEBOUNCE);
 	
 	
 	pio_set_debounce_filter(BUT1_PIO, BUT1_PIO_IDX_MASK, 40);
@@ -219,7 +219,7 @@ void io_init(void) {
 	pio_handler_set(BUT3_PIO, BUT3_PIO_ID, BUT3_PIO_IDX_MASK, PIO_IT_FALL_EDGE, but3_callback);
 
 
-	pio_enable_interrupt(BUT1_PIO_ID, BUT1_PIO_IDX_MASK);
+	pio_enable_interrupt(BUT1_PIO, BUT1_PIO_IDX_MASK);
 	pio_enable_interrupt(BUT2_PIO, BUT2_PIO_IDX_MASK);
 	pio_enable_interrupt(BUT3_PIO, BUT3_PIO_IDX_MASK);
 
